@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    export default {
+        data (){
+            return{
+                tasks: [],
+                task: {}
+            }
+        },
+        computed: {
+            allTasks() {
+                return this.tasks;
+            }
+        },
+        methods: {
+            addTask: function ()
+            {
+                this.tasks.unshift(this.task);
+            },
+
+
+        }
+
+    }
+</script>
+
+<template>
+    <div id="app">
+
+        <input type="text" v-model="task.name"/>
+
+        <button @click="addTask()">Add</button>
+
+        <br><br>
+
+        <ul>
+            <li v-for="t in allTasks">
+                <input type="checkbox" value="t.name">
+                <label>{{ t.name }}</label>
+                <button @click="deleteTask(t)">delete</button>
+            </li>
+        </ul>
+
+    </div>
+
+
+</template>
+</body>
+</html>
